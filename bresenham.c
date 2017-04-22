@@ -14,6 +14,7 @@ void main()
  xc=x0;
  yc=y0+r;
  putpixel(xc,yc,WHITE);
+ yc=y0;
  p0=3-2*r;
  pk=p0;
  x=0;
