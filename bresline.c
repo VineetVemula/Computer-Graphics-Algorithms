@@ -1,49 +1,115 @@
-# include <stdio.h>
-# include <conio.h>
-# include <graphics.h>
+#include<stdio.h>
 
-int main()
+#include<conio.h>
+
+#include<graphics.h>
+
+#include<math.h>
+
+void main()
+
 {
-int dx,dy,x,y,p,x1,y1,x2,y2;
-int gd,gm;
-clrscr();
-detectgraph(&gd,&gm);
-initgraph(&gd,&gm,"..//BGI");
 
-printf("\n\n\tEnter the co-ordinates of first point : ");
-scanf("%d %d",&x1,&y1);
-printf("\n\n\tEnter the co-ordinates of second point : ");
-scanf("%d %d",&x2,&y2);
+    int gd=DETECT, gm;
 
-dx = (x2 - x1);
-dy = (y2 - y1);
+    int x, y, x1, x2, y1, y2, dx, dy, p,a,b;
 
-p = 2 * (dy) - (dx);
+    clrscr();
 
-x = x1;
-y = y1;
+    initgraph(&gd, &gm, "C:/TC/BGI");
+
+    printf("Enter coordinates:\nx1 y1 :");
+
+    scanf("%d %d",&x1, &y1);
+
+    printf("\nx2 y2 :");
+
+    scanf("%d %d",&x2, &y2);
+
+    dx= abs(x2-x1);
+
+    dy= abs(y2-y1);
+
+    x = x1;
+
+    y = y1;
+
+    putpixel(x,y,WHITE);
+
+    a=dx/(abs(dx));
+
+    b=dy/(abs(dy));
+
+    while(x!=x2&&y!=y2)
+
+    {
+
+    if(abs(dx)>=abs(dy))
+
+    {
+
+	p=2*abs(dy)-abs(dx);
+
+	if(p<0)
+
+	{
+
+	     p=p+2*abs(dy);
+
+	     x=x+a;
+
+	}
+
+	else
+
+	{
+
+	     p=p+2*abs(dy)-2*abs(dx);
+
+	     x=x+a;
+
+	     y=y+b;
+
+	}
 
 
-putpixel(x,y,WHITE);
+    }
 
-while(x <= x2)
-{
-if(p < 0)
-{
-x=x+1;
-y=y;
-p = p + 2 * (dy);
-}
-else
-{
-x=x+1;
-y=y+1;
-p = p + 2 * (dy - dx);
-}
-putpixel(x,y,RED);
-}
-getch();
+    else
+
+    {   p=p+2*abs(dx)-abs(dy);
+
+	if(p<0)
+
+	{
+
+	    p=p+2*abs(dx);
+
+	    y=y+b;
+
+	}
+
+	else
+
+	{
+
+	    p=p+2*abs(dx)-abs(dy);
+
+	    x=x+a;
+
+	    y=y+b;
+
+	}
+
+    }
+
+    putpixel(x,y,WHITE);
+
+    }
+
+    getch();
+
 closegraph();
-return 0;
+
 
 }
