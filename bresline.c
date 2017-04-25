@@ -93,7 +93,7 @@ void main()
 
 	{
 
-	    p=p+2*abs(dx)-abs(dy);
+	    p=p+2*abs(dx)-2*abs(dy);
 
 	    x=x+a;
 
